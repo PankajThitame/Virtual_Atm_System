@@ -1,0 +1,35 @@
+CardNumber(int n)
+	{
+		int page=0;
+		
+		File file=new File("D:\\javapro\\PageNo.txt");
+		try (DataInputStream dis = new DataInputStream(new FileInputStream(file))) 
+		{
+			page=dis.readInt();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(file))) 
+		{
+			page++;
+			dos.writeInt(page);
+		}
+		catch(Exception ee)
+		{
+			ee.printStackTrace();
+		}
+		try (DataInputStream d = new DataInputStream(new FileInputStream(file))) 
+		{
+				int p=d.readInt();
+				System.out.println("Reading int from file: " + p);
+				pageA=p;
+				PageF.setPageNo(p);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
